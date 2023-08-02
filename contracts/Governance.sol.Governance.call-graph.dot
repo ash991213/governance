@@ -1,0 +1,93 @@
+strict digraph {
+subgraph cluster_1253_Ownable {
+label = "Ownable"
+"1253_transferOwnership" [label="transferOwnership"]
+"1253_constructor" [label="constructor"]
+"1253_owner" [label="owner"]
+"1253__transferOwnership" [label="_transferOwnership"]
+"1253_renounceOwnership" [label="renounceOwnership"]
+"1253__checkOwner" [label="_checkOwner"]
+"1253_transferOwnership" -> "1253_onlyOwner"
+"1253_constructor" -> "1253__transferOwnership"
+"1253_transferOwnership" -> "1253__transferOwnership"
+"1253_constructor" -> "1253__msgSender"
+"1253_renounceOwnership" -> "1253_onlyOwner"
+"1253__checkOwner" -> "1253__msgSender"
+"1253_renounceOwnership" -> "1253__transferOwnership"
+"1253__checkOwner" -> "1253_owner"
+}subgraph cluster_1318_ReentrancyGuard {
+label = "ReentrancyGuard"
+"1318__reentrancyGuardEntered" [label="_reentrancyGuardEntered"]
+"1318_constructor" [label="constructor"]
+"1318__nonReentrantAfter" [label="_nonReentrantAfter"]
+"1318__nonReentrantBefore" [label="_nonReentrantBefore"]
+}subgraph cluster_71_Payable {
+label = "Payable"
+"71_receive" [label="receive"]
+"71_withdraw" [label="withdraw"]
+"71_withdraw" -> "71_nonReentrant"
+"71_withdraw" -> "71_onlyOwner"
+}subgraph cluster_1140_Governance {
+label = "Governance"
+"1140_getMostVotedChoice" [label="getMostVotedChoice"]
+"1140_getVoteSelectionAndCount" [label="getVoteSelectionAndCount"]
+"1140_slitherConstructorVariables" [label="slitherConstructorVariables"]
+"1140_transferVoteRewards" [label="transferVoteRewards"]
+"1140_createVote" [label="createVote"]
+"1140_endVote" [label="endVote"]
+"1140_totalVoters" [label="totalVoters"]
+"1140_isEligibleVoters" [label="isEligibleVoters"]
+"1140_isAllowedVoter" [label="isAllowedVoter"]
+"1140_getVoteCounts" [label="getVoteCounts"]
+"1140_setVotingPeriod" [label="setVotingPeriod"]
+"1140_hasVoted" [label="hasVoted"]
+"1140_addVoter" [label="addVoter"]
+"1140_vote" [label="vote"]
+"1140_forceEndVote" [label="forceEndVote"]
+"1140_verifyVoteCount" [label="verifyVoteCount"]
+"1140_removeVoter" [label="removeVoter"]
+"1140_vote" -> "1140_onlyEligibleVoters"
+"1140_transferVoteRewards" -> "1140_getMostVotedChoice"
+"1140_vote" -> "1140__msgSender"
+"1140_transferVoteRewards" -> "1140_nonReentrant"
+"1140_endVote" -> "1140_isValidVoteId"
+"1140_addVoter" -> "1140_onlyOwner"
+"1140_getVoteCounts" -> "1140_isValidVoteId"
+"1140_transferVoteRewards" -> "1140_isValidVoteId"
+"1140_addVoter" -> "1140_isAllowedVoter"
+"1140_removeVoter" -> "1140_onlyOwner"
+"1140_getVoteSelectionAndCount" -> "1140_isValidVoteId"
+"1140_transferVoteRewards" -> "1140__msgSender"
+"1140_forceEndVote" -> "1140_onlyOwner"
+"1140_endVote" -> "1140_onlyOwner"
+"1140_vote" -> "1140_isVotingPeriodExpired"
+"1140_vote" -> "1140_isValidVoteId"
+"1140_removeVoter" -> "1140_isAllowedVoter"
+"1140_hasVoted" -> "1140_isValidVoteId"
+"1140_setVotingPeriod" -> "1140_isValidVoteId"
+"1140_forceEndVote" -> "1140_isValidVoteId"
+"1140_verifyVoteCount" -> "1140_isValidVoteId"
+"1140_setVotingPeriod" -> "1140_onlyOwner"
+"1140_createVote" -> "1140_onlyOwner"
+"1140_totalVoters" -> "1140_isValidVoteId"
+}subgraph cluster_1340_Context {
+label = "Context"
+"1340__msgData" [label="_msgData"]
+"1340__msgSender" [label="_msgSender"]
+}subgraph cluster_solidity {
+label = "[Solidity]"
+"require(bool,string)" 
+"balance(address)" 
+"1140_vote" -> "require(bool,string)"
+"1140_getVoteSelectionAndCount" -> "require(bool,string)"
+"1318__nonReentrantBefore" -> "require(bool,string)"
+"1140_endVote" -> "require(bool,string)"
+"71_withdraw" -> "balance(address)"
+"1253__checkOwner" -> "require(bool,string)"
+"1140_removeVoter" -> "require(bool,string)"
+"1140_addVoter" -> "require(bool,string)"
+"71_withdraw" -> "require(bool,string)"
+"1140_transferVoteRewards" -> "require(bool,string)"
+"1253_transferOwnership" -> "require(bool,string)"
+}
+}

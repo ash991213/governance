@@ -46,4 +46,5 @@ Automated tests can be written to verify the functionality of the smart contract
 
 - Slither
 
-![스크린샷 2023-08-02 오후 3 38 41](https://github.com/ash991213/governance/assets/99451647/9cb6a2f4-e747-493f-a314-7d08a789848c)
+![스크린샷 2023-08-02 오후 3 38 41](https://github.com/ash991213/governance/assets/99451647/682a2087-4467-43e0-99b7-f5e15e2625e7)
+
